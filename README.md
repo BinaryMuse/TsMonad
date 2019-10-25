@@ -1,4 +1,7 @@
 # TsMonad
+
+> *Note*: this is a fork of the original TsMonad project
+
 * a simple and pragmatic monad library
 * designed for TypeScript
 * with the aim of limiting errors due to unhandled nulls
@@ -21,15 +24,15 @@ This library will work with vanilla ES3 JavaScript with node or in the browser. 
 
 Node:
 
-    var TsMonad = require('tsmonad');
+    var TsMonad = require('@binarymuse/tsmonad');
 
 Browser:
 
-    <script src="node_modules/tsmonad/dist/tsmonad.js"></script>
+    <script src="node_modules/@binarymuse/tsmonad/dist/tsmonad.js"></script>
 
 TypeScript definitions:
 
-    /// <reference path="node_modules/tsmonad/dist/tsmonad.d.ts" />
+    /// <reference path="node_modules/@binarymuse/tsmonad/dist/tsmonad.d.ts" />
 
 ## Examples (in TypeScript)
 You can see the unit tests for the examples below [online here](https://cbowdon.github.io/tests/TsMonad) and view the source in test/examples.ts.
@@ -93,6 +96,7 @@ There are some convenience methods in Maybe:
 user.getLikesCookies().defaulting(false); // Maybe<false>
 user.getLikesCookies().valueOr(false); // false
 user.getLikesCookies().valueOrCompute(() => expensiveCalculation());
+user.getLikesCookies().valueOrComputeAsync(() => expensivePromiseCalculation()); // returns a Promise
 user.getLikesCookies().valueOrThrow(new Error());
 
 // Maybe.just({ three: 3, hi: 'hi'})

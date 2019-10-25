@@ -5,11 +5,12 @@
         "moduleResolution": "node",
         "isolatedModules": false,
         "declaration": true,
-        "noImplicitAny": true,
+        "noImplicitAny": false,
         "noImplicitUseStrict": false,
         "removeComments": true,
         "preserveConstEnums": true,
         "outDir": "lib",
+        "strict": false,
         "lib": [
             "es6",
             "dom",

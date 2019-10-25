@@ -104,7 +104,7 @@ export class Maybe<T> implements Monad<T>, Functor<T>, Eq<Maybe<T>> {
      */
     static maybe<T>(t?: T | null): Maybe<T> {
         return t === null || t === undefined
-          ? new Maybe<T>(MaybeType.Nothing) 
+          ? new Maybe<T>(MaybeType.Nothing)
           : new Maybe<T>(MaybeType.Just, t);
     }
 
@@ -325,6 +325,20 @@ export class Maybe<T> implements Monad<T>, Functor<T>, Eq<Maybe<T>> {
      */
     valueOrCompute<U extends T>(defaultValueFunction: () => U): T|U {
         return this.type === MaybeType.Just ? this.value : defaultValueFunction();
+    }
+
+    /**
+     * @name valueOrComputeAsync
+     * @description Unwrap a Maybe with a default value computed from a thunk that returns a promise
+     * @methodOf Maybe#
+     * @public
+     * @param {Promise<T>} defaultValueFunction Default value to compute if Nothing
+     * @return {Promise<T>}
+     * Separate U type to allow Maybe.nothing().valueOrCompute() to match
+     * without explicitly typing Maybe.nothing.
+     */
+    valueOrComputeAsync<U extends T>(defaultValueFunction: () => Promise<U>): Promise<T|U> {
+        return this.type === MaybeType.Just ? Promise.resolve(this.value) : defaultValueFunction()
     }
 
     /**
