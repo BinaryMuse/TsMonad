@@ -1,15 +1,10 @@
 # TsMonad
 
-> *Note*: this is a fork of the original TsMonad project
+> *Note*: this is a fork of the original TsMonad project. It is largely unchanged save for a different name (`@binarymuse/tsmonad`) and the addition of a few small methods.
 
 * a simple and pragmatic monad library
 * designed for TypeScript
 * with the aim of limiting errors due to unhandled nulls
-
-## Status
-Sorry folks, I don't have time to actively maintain this project. Glad it has been of help to some people and thanks everyone for your contributions!
-
-I'm not seeking maintainer to take over - of course feel free to fork if you'd like to continue developing TsMonad.
 
 ## Description
 This library provides implementations of the most useful monads outside of Haskell (subjectively, this is Maybe and Either). It also provides a strongly-typed emulation of pattern matching to help enforce program correctness.
