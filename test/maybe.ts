@@ -149,6 +149,17 @@ describe('Maybe', () => {
         assert.throws(() => Maybe.nothing().valueOrCompute<any>(() => { throw new Error() }));
     });
 
+    it('valueOrComputeAsync', async () => {
+
+        assert.strictEqual(await Maybe.just(10).valueOrComputeAsync(async () => 20), 10);
+
+        assert.strictEqual(await Maybe.nothing<number>().valueOrComputeAsync(async () => 20), 20);
+
+        assert.strictEqual(await Maybe.just(10).valueOrComputeAsync<any>(() => { throw new Error() }), 10);
+
+        assert.rejects(async () => await Maybe.nothing().valueOrComputeAsync<any>(() => { throw new Error() }));
+    });
+
     it('valueOrThrow', () => {
 
         assert.strictEqual(Maybe.just(10).valueOrThrow(), 10);
