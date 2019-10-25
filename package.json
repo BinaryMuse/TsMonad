@@ -1,6 +1,6 @@
 {
   "name": "@binarymuse/tsmonad",
-  "version": "0.8.1",
+  "version": "0.8.2",
   "description": "TsMonad - fun-size monads library for TypeScript",
   "main": "./dist/tsmonad.js",
   "typings": "./lib/src/index",
